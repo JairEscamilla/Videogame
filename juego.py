@@ -25,6 +25,17 @@ ventana = pygame.display.set_mode((ANCHO, ALTO))
 game_over = False
 clock = pygame.time.Clock()
 
+# FUNCION QUE DETECTA COLISIONES	
+def detectarColision(jugador_pos, enemigo_pos):
+	jx = jugador_pos[0]
+	jy = jugador_pos[1]
+	ex = enemigo_pos[0]
+	ey = enemigo_pos[1]
+	if (ex >= jx and ex < (jx + jugador_size)) or (jx >= ex and jx < (ex + enemigo_size)):
+		if (ey >= jy and ey < (jy + jugador_size)) or (jy >= ey and jy < (ey + enemigo_size)):
+			return True
+	return False
+
 while not game_over:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:	
@@ -44,6 +55,11 @@ while not game_over:
 	else:
 		enemigo_pos[0] = random.randint(0, ANCHO - enemigo_size)
 		enemigo_pos[1] = 0
+	
+	# Colisiones
+	if detectarColision(jugador_pos, enemigo_pos):
+		game_over = True
+
 	# Dibujar enemigo 
 	pygame.draw.rect(ventana, AZUL, (enemigo_pos[0], enemigo_pos[1], enemigo_size, enemigo_size))
 
