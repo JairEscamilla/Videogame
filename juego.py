@@ -10,8 +10,13 @@ ROJO = (255, 0, 0)
 NEGRO = (0, 0, 0)
 AZUL = (0, 0, 255)
 # Jugador
-jugador_pos = [400, 400]
 jugador_size = 50
+jugador_pos = [ANCHO / 2, ALTO - jugador_size*2]
+
+# Enemigo
+enemigo_size = 50
+enemigo_pos = [300, 0]
+
 
 # VENTANA
 ventana = pygame.display.set_mode((ANCHO, ALTO))
@@ -31,6 +36,9 @@ while not game_over:
 			jugador_pos[0] = x
 
 	ventana.fill(NEGRO)
+
+	# Dibujar enemigo
+	pygame.draw.rect(ventana, AZUL, (enemigo_pos[0], enemigo_pos[1], enemigo_size, enemigo_size))
 
 	# Dibujando cuadrado
 	pygame.draw.rect(ventana, ROJO, (jugador_pos[0], jugador_pos[1], jugador_size, jugador_size))
