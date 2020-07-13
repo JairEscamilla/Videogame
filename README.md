@@ -31,5 +31,3 @@ python3 juego.py
 * **César Mauricio Arellano V.** - *Programación* 
 
 
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
-
